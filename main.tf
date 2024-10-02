@@ -13,6 +13,6 @@ data "kubectl_file_documents" "manifest_url" {
 }
 
 resource "kubectl_manifest" "install_manifest_url" {
-  for_each  = { for key, doc in data.kubectl_file_documents : key => doc.manifests }
+  for_each  = { for key, doc in data.kubectl_file_documents : key => doc.documents }
   yaml_body = each.value
 }
