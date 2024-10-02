@@ -3,7 +3,7 @@ locals {
 }
 
 data "http" "manifest_url" {
-  for_each = toset(var.crds_urls)
+  for_each = toset(var.manifests_urls)
   url      = each.value
 }
 
@@ -13,6 +13,6 @@ data "kubectl_file_documents" "manifest_url" {
 }
 
 resource "kubectl_manifest" "install_manifest_url" {
-  for_each  = { for key, value in data.kubectl_file_documents : key => value.manifests }
+  for_each  = { for key, doc in data.kubectl_file_documents : key => doc.manifests }
   yaml_body = each.value
 }

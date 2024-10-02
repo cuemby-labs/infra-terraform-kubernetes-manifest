@@ -28,7 +28,7 @@ EOF
 # Kubernetes
 #
 
-variable "crds_urls" {
+variable "manifests_urls" {
   description = "URLs list from the raw manifests"
   type        = list(string)
 }

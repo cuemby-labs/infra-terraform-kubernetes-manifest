@@ -6,10 +6,10 @@ components:
     variables:
       type: object
       required:
-      - crds_urls
+      - manifests_urls
       properties:
-        crds_urls:
-          title: Crds Urls
+        manifests_urls:
+          title: Manifests Urls
           type: array
           description: URLs list from the raw manifests
           items:
