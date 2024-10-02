@@ -1,10 +1,23 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for template walrus-template-template
+  title: OpenAPI schema for template .
 components:
   schemas:
     variables:
       type: object
+      required:
+      - crds_urls
+      properties:
+        crds_urls:
+          title: Crds Urls
+          type: array
+          description: URLs list from the raw manifests
+          items:
+            type: string
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 2
       x-walrus-ui:
         groupOrder:
         - Basic

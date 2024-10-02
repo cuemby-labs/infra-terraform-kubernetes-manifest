@@ -23,3 +23,12 @@ EOF
   type        = map(any)
   default     = {}
 }
+
+#
+# Kubernetes
+#
+
+variable "crds_urls" {
+  description = "URLs list from the raw manifests"
+  type        = list(string)
+}
