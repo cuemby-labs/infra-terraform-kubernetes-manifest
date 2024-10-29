@@ -1,11 +1,15 @@
-# Awesome Walrus Template
+# Kubernetes manifest raw install Template
 
-Start here to create an awesome Walrus template.
+Terraform module which install Kubernetes manifest from raw URL.
 
 ## Usage
 
 ```hcl
+module "kubernetes_manifest" {
+  source              = "./modules/kubernetes_manifest" # Path to the kubernetes manifest module.
 
+  manifests_urls      = var.manifests_urls              # The RAW HTTP URL.
+}
 ```
 
 ## Examples
@@ -22,33 +26,38 @@ Please read our [contributing guide](./docs/CONTRIBUTING.md) if you're intereste
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.23.0 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | >= 1.5.7 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.23.0 |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_submodule"></a> [submodule](#module\_submodule) | ./modules/submodule | n/a |
+No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [kubectl_manifest.test](https://registry.terraform.io/providers/alekc/kubectl/latest/docs/resources/kubectl_manifest) | resource |
+| [http.example](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) | data |
+| [kubectl_file_documents.docs](https://registry.terraform.io/providers/gavinbunney/kubectl/latest/docs/data-sources/kubectl_file_documents) | data |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_context"></a> [context](#input\_context) | Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.<br><br>Examples:<pre>context:<br>  project:<br>    name: string<br>    id: string<br>  environment:<br>    name: string<br>    id: string<br>  resource:<br>    name: string<br>    id: string</pre> | `map(any)` | `{}` | no |
+| <a name="input_manifests_urls"></a> [manifests_urls](#input_manifests_urls) | List of HTTP RAW URLs where the manifest is located. | list(string) | "" | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_submodule"></a> [submodule](#output\_submodule) | The message from submodule. |
 | <a name="output_walrus_environment_id"></a> [walrus\_environment\_id](#output\_walrus\_environment\_id) | The id of environment where deployed in Walrus. |
 | <a name="output_walrus_environment_name"></a> [walrus\_environment\_name](#output\_walrus\_environment\_name) | The name of environment where deployed in Walrus. |
 | <a name="output_walrus_project_id"></a> [walrus\_project\_id](#output\_walrus\_project\_id) | The id of project where deployed in Walrus. |
